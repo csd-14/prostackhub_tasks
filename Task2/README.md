@@ -4,49 +4,49 @@
 
 This project is a serverless Todo REST API developed as part of the **ProStackHub Cloud Computing Internship 2026**.
 
-The backend provides complete CRUD operations for Todo items using AWS cloud services.
+The backend provides complete CRUD (Create, Read, Update, Delete) functionality for Todo items using AWS managed services.
 
-The application uses:
-
-- AWS Lambda
-- Amazon DynamoDB
-- Amazon API Gateway
-- AWS IAM
-- Amazon CloudWatch
-
-The API is deployed on AWS and can be accessed through a live API Gateway endpoint.
+The application is designed using a serverless architecture, so there are no traditional servers to manage.
 
 ---
 
-## 🎯 Project Objective
+## 👤 Intern Details
 
-The objective of this task was to build and deploy a serverless REST API capable of:
-
-1. Creating Todo items
-2. Retrieving Todo items
-3. Updating Todo items
-4. Deleting Todo items
-
-The backend is completely serverless, so there are no traditional servers that need to be managed.
+**Name:** Arunashree V  
+**Domain:** Cloud Computing  
+**Internship:** ProStackHub Cloud Computing Internship 2026
 
 ---
 
 # ☁️ AWS Architecture
 
+The project uses the following AWS services:
+
+- AWS API Gateway
+- AWS Lambda
+- Amazon DynamoDB
+- AWS IAM
+- Amazon CloudWatch
+
+### Architecture Flow
+
 ```text
-                    Client
-                      |
-                      | HTTPS
-                      v
-             Amazon API Gateway
-                      |
-                      | Lambda Proxy
-                      v
-                 AWS Lambda
-                      |
-                      | AWS SDK
-                      v
-              Amazon DynamoDB
-                      |
-                      v
-                 TodoItems
+                    User / Client
+                         |
+                         | HTTPS
+                         v
+                Amazon API Gateway
+                         |
+          +--------------+--------------+
+          |              |              |
+         POST            GET           PUT / DELETE
+          |              |              |
+          v              v              v
+     CreateTodo       GetTodos      UpdateTodo
+                                      DeleteTodo
+          |              |              |
+          +--------------+--------------+
+                         |
+                         v
+                  Amazon DynamoDB
+                     TodoItems
