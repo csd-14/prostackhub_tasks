@@ -1,10 +1,12 @@
-# Task 2 — Serverless REST API / CRUD Backend
+# 🚀 Task 2 — Serverless REST API / CRUD Backend
 
-## Project Overview
+## 📌 Project Overview
 
-A serverless Todo REST API built using AWS Lambda, Amazon DynamoDB, and Amazon API Gateway.
+This project is a serverless Todo REST API developed as part of the **ProStackHub Cloud Computing Internship 2026**.
 
-## AWS Services Used
+The backend provides complete CRUD operations for Todo items using AWS cloud services.
+
+The application uses:
 
 - AWS Lambda
 - Amazon DynamoDB
@@ -12,53 +14,39 @@ A serverless Todo REST API built using AWS Lambda, Amazon DynamoDB, and Amazon A
 - AWS IAM
 - Amazon CloudWatch
 
-## CRUD Operations
+The API is deployed on AWS and can be accessed through a live API Gateway endpoint.
 
-| Method | Endpoint | Function |
-|---|---|---|
-| POST | `/todos` | CreateTodo |
-| GET | `/todos` | GetTodos |
-| PUT | `/todos` | UpdateTodo |
-| DELETE | `/todos` | DeleteTodo |
+---
 
-## DynamoDB
+## 🎯 Project Objective
 
-Table name:
+The objective of this task was to build and deploy a serverless REST API capable of:
 
-`TodoItems`
+1. Creating Todo items
+2. Retrieving Todo items
+3. Updating Todo items
+4. Deleting Todo items
 
-Partition key:
+The backend is completely serverless, so there are no traditional servers that need to be managed.
 
-`id` (String)
+---
 
-Each Todo contains:
+# ☁️ AWS Architecture
 
-- `id`
-- `title`
-- `completed`
-- `createdAt`
-
-## Live API
-
-https://6mmtfmj8p5.execute-api.eu-north-1.amazonaws.com/prod/todos
-
-## Architecture
-
-Client → API Gateway → AWS Lambda → DynamoDB
-
-## Testing
-
-All four CRUD operations were tested successfully through the deployed API:
-
-- POST — Todo created successfully
-- GET — Todos retrieved successfully
-- PUT — Todo updated successfully
-- DELETE — Todo deleted successfully
-
-## Region
-
-AWS Region: `eu-north-1`
-
-## Project
-
-Completed as part of the ProStackHub Cloud Computing Internship.
+```text
+                    Client
+                      |
+                      | HTTPS
+                      v
+             Amazon API Gateway
+                      |
+                      | Lambda Proxy
+                      v
+                 AWS Lambda
+                      |
+                      | AWS SDK
+                      v
+              Amazon DynamoDB
+                      |
+                      v
+                 TodoItems
